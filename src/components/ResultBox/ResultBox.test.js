@@ -10,7 +10,14 @@ import '@testing-library/jest-dom/extend-expect';
                 { from: 'PLN', to: 'USD', amount: 345, expectedText: 'PLN 345.00 = $98.57' }, 
                 { from: 'USD', to: 'PLN', amount: 28.57, expectedText: '$28.57 = PLN 100.00' },
                 { from: 'USD', to: 'PLN', amount: 57.14, expectedText: '$57.14 = PLN 199.99' },
-                { from: 'USD', to: 'PLN', amount: 98.57, expectedText: '$98.57 = PLN 345.00' } 
+                { from: 'USD', to: 'PLN', amount: 98.57, expectedText: '$98.57 = PLN 345.00' }, 
+                { from: 'PLN', to: 'PLN', amount: 100, expectedText: 'PLN 100.00 = PLN 100.00' },
+                { from: 'PLN', to: 'PLN', amount: 20, expectedText: 'PLN 20.00 = PLN 20.00' },
+                { from: 'PLN', to: 'PLN', amount: 200, expectedText: 'PLN 200.00 = PLN 200.00' },
+                { from: 'PLN', to: 'PLN', amount: 345, expectedText: 'PLN 345.00 = PLN 345.00' },
+                { from: 'USD', to: 'USD', amount: 28.57, expectedText: '$28.57 = $28.57' },
+                { from: 'USD', to: 'USD', amount: 57.14, expectedText: '$57.14 = $57.14' },
+                { from: 'USD', to: 'USD', amount: 98.57, expectedText: '$98.57 = $98.57' }
             ];
           
             for (const testCase of testCases) {
