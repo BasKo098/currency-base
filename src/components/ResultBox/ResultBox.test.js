@@ -30,13 +30,34 @@ import '@testing-library/jest-dom/extend-expect';
           
                 // check if main div has a proper argument
                 expect(output).toHaveTextContent(testCase.expectedText);
-          
+
                 // amount component
                 cleanup();
               });
+            };
+
+            const negativeTestCases = [
+                { from: 'PLN', to: 'USD', amount: -50, expectedText: 'Wrong value' },
+                { from: 'USD', to: 'PLN', amount: -20, expectedText: 'Wrong value' },
+                { from: 'PLN', to: 'USD', amount: -200, expectedText: 'Wrong value' },
+            ];
+
+            for (const testCase of negativeTestCases) {
+                it(`should render "Wrong value" for negative amount (${testCase.amount})`, () => {
+                    // render component
+                    render(<ResultBox from={testCase.from} to={testCase.to} amount={testCase.amount} />);
+            
+                    // find output elements
+                    const output = screen.getByTestId('output');
+            
+                    // check if main div has a proper argument
+                    expect(output).toHaveTextContent(testCase.expectedText);
+            
+                    // amount component
+                    cleanup();
+                });
             }
         });
-            
 
             //render component
         //render(<ResultBox from="PLN" to="USD" amount={100} />);
