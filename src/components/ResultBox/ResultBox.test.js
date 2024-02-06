@@ -52,11 +52,13 @@ import '@testing-library/jest-dom/extend-expect';
             
                     // check if main div has a proper argument
                     expect(output).toHaveTextContent(testCase.expectedText);
-            
-                    // amount component
-                    cleanup();
                 });
             }
+
+            // Cleanup after each test
+            afterEach(() => {
+                    cleanup();
+            });
         });
 
             //render component
